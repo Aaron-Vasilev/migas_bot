@@ -2,11 +2,31 @@
   "name": "migas_bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "start": "node ./dist/yogabot.js",
+    "restart": "pm2 del yogabot && pm2 start ./dist/yogabot.js",
+    "launch": "webpack && pm2 del yogabot && pm2 start ./dist/yogabot.js",
+    "build": "webpack",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "5.5.2",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
+    "telegraf": "^4.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "@types/pg": "^8.10.7",
+    "nodemon": "^3.0.1",
+    "prisma": "^5.5.2",
+    "ts-loader": "^9.5.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
 }
