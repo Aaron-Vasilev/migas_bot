@@ -5,7 +5,15 @@ export async function connectMenu(bot: Telegraf) {
   bot.telegram.setMyCommands([
     {
       command: Command.findPsycho,
-      description: 'Найти психолога'
+      description: 'Выбрать специалиста'
+    },
+    {
+      command: Command.findTherapist,
+      description: 'Aнкета для поиска психотерапевта'
+    },
+    {
+      command: Command.therapistForm,
+      description: 'Aнкета для терапевтов'
     },
   ])
 }

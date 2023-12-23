@@ -1,20 +1,18 @@
-import { PrismaClient } from '@prisma/client'
+import { type Client } from 'pg'
 import type { Telegraf } from 'telegraf'
 
-export async function connectStart(bot: Telegraf, db: PrismaClient) {
+export async function connectStart(bot: Telegraf, db: Client) {
   bot.start(async ctx => {
     try {
       const { id, username, first_name, last_name } = ctx.from
-      const fullname = (first_name ? `${first_name}` : '') +
+      const fullName = (first_name ? `${first_name}` : '') +
                        (first_name && last_name ? ' ' : '') +
                        (last_name ? `${last_name}` : '')
-      const user = { id, fullname, username }
 
-      await db.user.upsert({
-        where: { id },
-        update: { fullname, username },
-        create: user
-      }) 
+      await db.query(`INSERT INTO migas.user (id, username, fullname)
+                      VALUES ($1, $2, $3) ON CONFLICT (id) DO
+                      UPDATE SET username=$2, fullname=$3;`, [id, username, fullName])
+
       ctx.reply("Hi a new user!")
     } catch (e) {
       console.log('† line 8 e', e)
