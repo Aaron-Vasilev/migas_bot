@@ -89,10 +89,10 @@ export const therapistForm = (db: Client) => (new Scenes.WizardScene(THERAPIST_F
     if (!ctx.update.callback_query) return ctx.reply(Message.notButton)
 
     ctx.wizard.state.duration = ctx.update.callback_query.data
-    ctx.reply("В каком формате работаете?", {
+    ctx.reply("В каком формате вы работаете?", {
       ...Markup.inlineKeyboard([
         [Markup.button.callback('Очно в Москве', '1')],
-        [Markup.button.callback('', '2')],
+        [Markup.button.callback('Онлайн', '2')],
         [Markup.button.callback('Любом', '0')],
       ])
     })
@@ -127,6 +127,7 @@ export const therapistForm = (db: Client) => (new Scenes.WizardScene(THERAPIST_F
                    [ctx.message.from.id, price, career, family, teen, self, relations, 
                     psychosomatic, doubt, format, description, url.href])
     
+    ctx.reply("Поздравляем, ваша анкета создана!")
     return ctx.scene.leave()
   }
 ))

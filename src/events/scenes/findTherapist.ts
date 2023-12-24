@@ -98,7 +98,6 @@ export const findTherapist = (db: Client) => (new Scenes.WizardScene(FIND_THERAP
     const { price, category, duration, experience } = ctx.wizard.state
     const [minPrice, maxPrice] = price.split('-')
     const categoryQuery = category ? `AND ${Category[category]} > 0` : ""
-    console.log('† line 100 categoryQuery', categoryQuery)
 
     const res = await db.query(`
       SELECT migas.user.id, description, photo, fullname FROM migas.specialist
