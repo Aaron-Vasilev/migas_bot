@@ -9,8 +9,8 @@ import { THERAPIST_FORM, therapistForm } from './therapistForm'
 export async function connectScenes(bot: Telegraf, db: Client) {
 
   const stage = new Scenes.Stage([
-    findTherapist(db), 
-    therapistForm(db),
+    findTherapist(db).command(Command.cancel, ctx => ctx.scene.leave()), 
+    therapistForm(db).command(Command.cancel, ctx => ctx.scene.leave()),
   ])
 
   bot.use(session())

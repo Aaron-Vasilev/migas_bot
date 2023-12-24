@@ -1,6 +1,6 @@
 export enum Command {
+  cancel = 'cancel',
   exit = 'exit',
-  findPsycho = 'find_psy',
   findTherapist = 'find_therapist',
   therapistForm = 'therapist_form',
   supervisors = 'supervisors',
