@@ -5,9 +5,9 @@
   "main": "./src/index.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
-    "start": "node ./dist/yogabot.js",
-    "restart": "pm2 del yogabot && pm2 start ./dist/yogabot.js",
-    "launch": "webpack && pm2 del yogabot && pm2 start ./dist/yogabot.js",
+    "start": "node ./dist/bot.js",
+    "restart": "pm2 del bot && pm2 start ./dist/bot.js",
+    "launch": "webpack && pm2 del bot && pm2 start ./dist/bot.js",
     "build": "webpack",
     "prismagen": "npx prisma generate --schema=./src/prisma/schema.prisma"
   },

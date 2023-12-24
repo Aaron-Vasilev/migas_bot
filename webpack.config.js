@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'yogabot.js',
+    filename: 'bot.js',
   },
   resolve: {
     extensions: ['.ts', '.js'],
